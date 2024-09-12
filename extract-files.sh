@@ -111,6 +111,9 @@ function blob_fixup() {
         odm/lib64/vendor.oplus.hardware.urcc-V1-ndk_platform.so)
             grep -q libjsoncpp-v30.so "${2}" || "${PATCHELF}" --replace-needed "libjsoncpp.so" "libjsoncpp-v30.so" "${2}"
             ;;
+	odm/lib64/libwvhidl.so)
+	    "${PATCHELF}" --replace-needed "libcrypto.so" "libcrypto-v33.so" "${2}"
+	    ;;
     esac
 }
 
